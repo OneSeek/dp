@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>大棚数据可视化</title>
+		<link href="css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
+		<link href="css/style.css" type="text/css" rel="stylesheet" media="all">
+		<!-- Custom Theme files -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="keywords" content="Collective Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+	Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+		<script type="application/x-javascript">
+			addEventListener("load", function() {
+				setTimeout(hideURLbar, 0);
+			}, false);
+
+			function hideURLbar() {
+				window.scrollTo(0, 1);
+			}
+		</script>
+		<!-- //Custom Theme files -->
+		<!-- js -->
+		<script src="js/jquery-1.11.1.min.js"></script>
+		<script src="layui/layui.all.js"></script>
+		<link rel="stylesheet" href="layui/css/layui.css"/>
+		<!-- //js -->
+		<!--animate-->
+		<link href="css/animate.css" rel="stylesheet" type="text/css" media="all">
+		<style>
+			body{
+				background: #F0F2F0;
+			}
+			.content{
+				width: 80%;
+				margin-left: 10%;
+				margin-top: 50px;
+				
+			}
+			.slider{
+				float: left;
+				width: 23%;
+				
+			}
+			.slider .sidebar-title {
+    font-size: 20px;
+    color: #fff;
+    background: #43C8FA;
+    text-align: center;
+    padding: 15px 0 15px 10px;
+    position: relative;
+}
+.slider a{
+	    text-align: center;
+    border-bottom: solid 1px #c1c9c0;
+    display: block;
+    padding: 15px 0;
+    font-size: 16px;
+    position: relative;
+    color: #3a3a3a;
+}
+.slider li{
+	background: #b4c5b2;
+}
+.f{
+	width: 75%;
+	float: right;
+	height: 500px;
+	background: white;
+}
+.f-header{
+	background: #43C8FA;
+	height:50px;
+	line-height: 50px;
+}
+.f-header h1{
+	font-size: 22px;
+    font-weight: 400;
+    color: #3a3a3a;
+    position: relative;
+    padding: 15px 20px;
+}
+		</style>
+	</head>
+	<body>
+		<!--navigation-->
+		<div class="top-nav">
+			<nav class="navbar navbar-default">
+				<div class="container">
+					<div class="navbar-header navbar-left">
+						<h1><a class="navbar-brand wow bounceIn animated" data-wow-delay=".5s" style="visibility: visible; -webkit-animation-delay: .5s;"
+							 href="index.html">大棚数据可视化</a></h1>
+					</div>
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav navbar-left">
+							<li class="hvr-bounce-to-bottom"><a href="index.html">首页</a></li>
+							<li class="hvr-bounce-to-bottom"><a href="table.html">图表</a></li>
+							<li class="hvr-bounce-to-bottom active"><a href="charts.html">统计图</a></li>
+							<li class="hvr-bounce-to-bottom"><a href="about.html">关于我们</a></li>
+						</ul>
+						<div class="clearfix"> </div>
+					</div>
+				</div>
+			</nav>
+		</div>
+		<!--navigation-->
+		<!--about-->
+		<div class="content">
+			<div class="slider">
+				<p class="sidebar-title"><i class="iconfont icon-shichang"></i>数据分析</p>
+				    	<ul class="nav">
+				    	    <li class="li">
+				            	<a href="/n1"><i class="iconfont icon-tudi"></i>面积分析</a>
+				            </li>
+				            <li class="animate">
+				            	<a href="/n2"><i class="iconfont icon-tudi"></i>市场分析</a>
+				            </li>
+				             <li class="animate">
+				            	<a href="/n3"><i class="iconfont icon-tudi"></i>价格分析</a>
+				            </li>    
+				            <li class="animate">
+				            	<a href="/n4"><i class="iconfont icon-tudi"></i>气象分析</a>
+				            </li>     
+				        </ul>    
+			</div>  
+		   <div class="f">
+			   <div class="f-header">
+				   <h1>
+					   平均温度
+				   </h1>
+			   </div>
+			   <div style="float: right;">
+				   <!-- 下面是二charts图 -->
+				   
+				   
+				   <div class="layui-col-md8">
+				     <div class="layui-row layui-col-space15">
+				   	  <div class="layui-col-md12">
+				   		  <div class="layui-card">
+				   			  <div class="layui-card-body">
+				   				  <div class="layui-card-header">平均温度</div>
+								  <!-- 真正放图的div -->
+								  
+				   				  <div id="container" style="height:350px;"></div>
+								  
+								  
+				   	          </div>
+				   	      </div>
+				   	  </div>
+				     </div>
+				   </div>
+				   
+				   
+				   
+			   </div>
+		   </div>
+		</div>
+		
+		<!--//about-->
+		<!-- about-bottom -->
+		<div class="about-bottom">
+			<div class="container">
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+		<!-- //about-bottom -->
+		<!--team-->
+		<div class="team" id="team">
+			<div class="container">
+				<h3 class="title title1">Meet Our <span>Team</span></h3>
+				<div class="team-info">
+
+					<div class="clearfix"> </div>
+				</div>
+			</div>
+		</div>
+		<!--//team-->
+		<!--special-->
+		<div class="special">
+			<div class="container">
+
+			</div>
+		</div>
+		<!--//special-->
+		<!--footer-->
+		<div class="footer wow fadeInRight animated" data-wow-delay=".5s" style="visibility: visible; -webkit-animation-delay: .5s;">
+			<div class="container">
+				<p>欢迎联系我们</p>
+			</div>
+		</div>
+		<!--//services-->
+		<script src="js/bootstrap.js"></script>
+		<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+		<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+		<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+		<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+		<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
+
+		<script>
+			$(document).ready(function() {
+				$.ajax({
+					url: 'js/temp.json',
+					type: 'get',
+					dataType: 'json',
+					success: function(obj) {
+						var myChart = echarts.init(document.getElementById('container'));
+						option = null;
+						
+						option = {
+    title: {
+        text: '棚内温度 棚外平均温度对比图',
+        subtext: '数据来自',
+        x: 'center'
+    },
+    tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+            animation: false
+        }
+    },
+    toolbox: {
+        feature: {
+            dataZoom: {
+                yAxisIndex: 'none'
+            },
+            restore: {},
+            saveAsImage: {}
+        }
+    },
+    axisPointer: {
+        link: {xAxisIndex: 'all'}
+    },
+    dataZoom: 
+        {
+            show: true,
+            realtime: true,
+            start: 30,
+            end: 70,
+            xAxisIndex: [0, 1]
+        },
+    grid: {
+        left: 50,
+        right: 50,
+        height: '35%'
+    },
+    xAxis : {
+            type : 'category',
+            boundaryGap : false,
+            axisLine: {onZero: true},
+            data: obj.a
+        },
+    yAxis : 
+        {
+            name : '棚内空气温度',
+            type : 'value',
+            max : 50
+        },
+    series : 
+        {
+            name:'棚内空气温度',
+            type:'line',
+            symbolSize: 8,
+            hoverAnimation: false,
+            data:window.b
+			}
+};
+						if (option && typeof option === "object") {
+							myChart.setOption(option, true);
+						};
+					},
+					error: function() {
+						alert("查询失败");
+					}
+				});
+				console.log(window.a);
+			})
+			
+		</script>
+	</body>
+</html>

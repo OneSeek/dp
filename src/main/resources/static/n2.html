@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>大棚数据可视化</title>
+		<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+		<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+		<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+		<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+		<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+		<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+		<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+		<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
+		<link href="/static/css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
+		<link href="/static/css/style.css" type="text/css" rel="stylesheet" media="all">
+		<!-- Custom Theme files -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="keywords" content="Collective Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+	Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+		<script type="application/x-javascript">
+			addEventListener("load", function() {
+				setTimeout(hideURLbar, 0);
+			}, false);
+
+			function hideURLbar() {
+				window.scrollTo(0, 1);
+			}
+		</script>
+		<!-- //Custom Theme files -->
+		<!-- js -->
+		<script src="/static/js/jquery-1.11.1.min.js"></script>
+		<script src="/static/layui/layui.all.js"></script>
+		<link rel="stylesheet" href="/static/layui/css/layui.css"/>
+		<!-- //js -->
+		<!--animate-->
+		<link href="/static/css/animate.css" rel="stylesheet" type="text/css" media="all">
+		<style>
+			body{
+				background: #F0F2F0;
+			}
+			.content{
+				width: 80%;
+				margin-left: 10%;
+				margin-top: 50px;
+				
+			}
+			.slider{
+				float: left;
+				width: 23%;
+				
+			}
+			.slider .sidebar-title {
+    font-size: 20px;
+    color: #fff;
+    background: #43C8FA;
+    text-align: center;
+    padding: 15px 0 15px 10px;
+    position: relative;
+}
+.slider a{
+	    text-align: center;
+    border-bottom: solid 1px #c1c9c0;
+    display: block;
+    padding: 15px 0;
+    font-size: 16px;
+    position: relative;
+    color: #3a3a3a;
+}
+.slider li{
+	background: #b4c5b2;
+}
+.f{
+	width: 75%;
+	float: right;
+	height: 700px;
+	background: white;
+}
+.f-header{
+	background: #43C8FA;
+	height:50px;
+	line-height: 50px;
+}
+.f-header h1{
+	font-size: 22px;
+    font-weight: 400;
+    color: #3a3a3a;
+    position: relative;
+	padding: 15px 30px;
+}
+.drop{
+	width: 100%;
+	height: 40px;
+	background: #000000;
+	line-height: 40px;
+	text-align: right;
+}
+.drop a{
+	color: white;
+	padding-right: 20px;
+}
+			#jiesao{
+				border: 0;
+				font-family: inherit;
+				font-size: 100%;
+				font-style: inherit;
+				font-weight: inherit;
+				margin: 0;
+				outline: 0;
+				padding: 0;
+				vertical-align: baseline;
+			}
+		</style>
+	</head>
+	<body>
+<!--		&lt;!&ndash; 退出登陆 &ndash;&gt;-->
+<!--		<div class="drop"><a href="/drop">退出登陆</a></div>-->
+		<!--navigation-->
+		<div class="top-nav">
+			<nav class="navbar navbar-default">
+				<div class="container">
+					<div class="navbar-header navbar-left">
+						<h1><a class="navbar-brand wow bounceIn animated" data-wow-delay=".5s" style="visibility: visible; -webkit-animation-delay: .5s;"
+							 href="/index">大棚数据可视化</a></h1>
+					</div>
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav navbar-left">
+							<li class="hvr-bounce-to-bottom"><a href="/index">首页</a></li>
+							<li class="hvr-bounce-to-bottom"><a href="/table">数据展示</a></li>
+							<li class="hvr-bounce-to-bottom active"><a href="/echarts">数据分析</a></li>
+							<li class="hvr-bounce-to-bottom"><a href="/about">关于我们</a></li>
+							<li class=""><form th:action="@{/logout}" method="post">
+								<button class="btn btn-danger" style="margin-top: 20px">退出登录</button>
+							</form></li>
+						</ul>
+						<div class="clearfix"> </div>
+					</div>
+				</div>
+			</nav>
+		</div>
+		<!--navigation-->
+		<!--about-->
+		<div class="content">
+			<div class="slider">
+				<p class="sidebar-title"><i class="iconfont icon-shichang"></i>数据分析</p>
+				    	<ul class="nav">
+				    	    <li class="li">
+				    	    	<a href="/echarts"><i class="iconfont icon-tudi"></i>棚内外温度对比</a>
+				    	    </li>
+				    	     <li class="animate">
+				    	    	<a href="/static/n2.html"><i class="iconfont icon-tudi"></i>棚内温度预测</a>
+				    	    </li>
+				    	    <li class="animate">
+				    	    	<a href="/static/n3.html"><i class="iconfont icon-tudi"></i>温度走向趋势</a>
+				    	    </li>     
+				    	</ul>      
+			</div>  
+		   <div class="f">
+			   <div class="f-header">
+				   <h1>
+					   棚内温度预测
+				   </h1>
+			   </div>
+				   <!-- 下面是二charts图 -->
+			   <span id="jiesao">&nbsp;&nbsp;&nbsp;&nbsp;利用山东省新泰长兴某地区的大棚数据，
+				   采用时间序列预测模型预测未来100天内棚内温度。
+				   预测结果表明，未来100天内棚内温度呈下降趋势。
+			   </span>
+			   <br>
+								  <!-- 真正放图的div -->
+			   <div id="container" style="height: 80%;margin: 0;text-align: center;">
+				   <h2>大棚内温度预测</h2>
+<!--				   <div style="width: 100%;">-->
+<!--					   <form name="form1" id="dateForm">-->
+<!--					     <select name="year"></select>年-->
+<!--					     <select name="month"></select>月-->
+<!--					     <select name="day"></select>日-->
+<!--						 <button type="button" id="test" style="height: 30px;line-height: 30px;width: 58px;text-align: center;padding:0;" class="layui-btn" id="predict">查看</button>-->
+<!--						 <span>温度：<input style="border: 0;width: 20px;text-align:left;" id="wendu">	&#8451;</span>-->
+<!--					   </form>-->
+<!--				   </div>-->
+				   <img src="/static/images/predict1.png"/>
+
+			   </div>
+		   </div>
+		</div>
+		
+		<!--//about-->
+		<!-- about-bottom -->
+		<div class="about-bottom">
+			<div class="container">
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+		<!-- //about-bottom -->
+		<!--team-->
+		<div class="team" id="team">
+			<div class="container">
+				<h3 class="title title1">Meet Our <span>Team</span></h3>
+				<div class="team-info">
+
+					<div class="clearfix"> </div>
+				</div>
+			</div>
+		</div>
+		<!--//team-->
+		<!--special-->
+		<div class="special">
+			<div class="container">
+
+			</div>
+		</div>
+		<!--//special-->
+		<!--footer-->
+		<div class="footer wow fadeInRight animated" data-wow-delay=".5s" style="visibility: visible; -webkit-animation-delay: .5s;">
+			<div class="container">
+				<p>欢迎联系我们</p>
+			</div>
+		</div>
+		<!--//services-->
+		<script src="/static/js/bootstrap.js"></script>
+		<script>
+			$(function(){
+		  var i=2016;
+		  var date=new Date();
+		  var year=date.getFullYear();//获取当前年份
+		  var dropList;
+		  for(var i;i<2020;i++){
+		    if(i==year){
+		      dropList=dropList+"<option value='"+i+"' selected>"+i+"</option>";
+		    }else {
+		      dropList=dropList+"<option value='"+i+"'>"+i+"</option>";
+		    }
+		  }
+		  $('#dateForm select[name=year]').html(dropList);//生成年份下拉列表
+		  var monthly;
+		  for(var j=1;j<13;j++){
+		    monthly=monthly+'<option value="'+j+'">'+j+'</option>'
+		  }
+		  $('#dateForm select[name=month]').html(monthly);//生成月份下拉列表
+		  var daily;
+		  for(var day=1;day<=31;day++){
+		    daily=daily+'<option value="'+day+'">'+day+'</option>';
+		  }
+		  $('#dateForm select[name=day]').html(daily);
+		  $('#dateForm select[name=month]').change(function(){
+		    var currentDay;
+		    var total;
+		    var flag=$('#dateForm select[name=year]:selected').val();
+		    var currentMonth=$('#dateForm select[name=month]').val();
+		    switch (currentMonth){
+		      case "1":
+		      case "3":
+		      case "5":
+		      case "7":
+		      case "8":
+		      case "10":
+		      case "12":total=31;break;
+		      case "4":
+		      case "6":
+		      case "9":
+		      case "11":total=30;break;
+		      case "2":
+		        //闰年 整除4但是不整除100 或者整除400
+		        if( (flag%4==0 && flag%100!=0 ) || flag%400){
+		          total=29;
+		        }else {
+		          total=28;
+		        }
+		      default :break
+		    }
+		    for(day=1;day<=total;day++){
+		      currentDay=currentDay+'<option value="'+day+'">'+day+'</option>'
+		    }
+		    $('#dateForm select[name=day]').html(currentDay);//生成日期下拉列表
+		  });
+		});
+			
+		$("#test").on('click',function(){
+			var year = $("year").val();
+			var month = $("month").val();
+			var day = $("day").val();
+			$.ajax({
+				url:'',
+				type:'post',
+				data:{"year":year,"month":month,"day":day},
+				success:function(res){
+					$("wendu").val(res);
+				},
+				error:function(){
+					alert("无法访问服务器");
+				}
+			})
+		})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,32 @@
+body{
+    text-align: center;
+
+}
+
+.card{
+    /*background-color: white;*/
+    width:400px;
+    height:300px ;
+    position: absolute;
+    right: -5%;
+    top: 71%;
+    /*position: absolute; top: 50%; left: 50%;*/
+    transform: translate(-50%, -50%);
+    box-shadow: 10px 10px 5px #888888;
+    border-radius:3%;
+    background-color: ghostwhite;
+}
+
+.frs{
+
+    margin-top: 40px;
+    width: 350px;
+}
+.suc{margin-left: 60px;
+    margin-top: 10px;
+}
+.titles{
+
+    font-size: 25px;
+    margin-top: 30px;
+}

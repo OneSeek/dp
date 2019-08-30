@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>大棚数据可视化</title>
+		<!-- Custom Theme files -->
+		  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<script src="/static/js/jquery-1.11.1.min.js"></script>
+		<link href="/static/css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
+		<link href="/static/css/style.css" type="text/css" rel="stylesheet" media="all">
+		<link rel="stylesheet" href="/static/layui/css/layui.css" media="all">
+		<link rel="stylesheet" type="text/css" href="/static/jquery-easyui-1.7.0/themes/default/easyui.css">
+	    <link rel="stylesheet" type="text/css" href="/static/jquery-easyui-1.7.0/themes/icon.css">
+	    <link rel="stylesheet" type="text/css" href="/static/jquery-easyui-1.7.0/demo/demo.css">
+	    <script type="text/javascript" src="/static/jquery-easyui-1.7.0/jquery.easyui.min.js"></script>
+		<meta name="keywords" content="Collective Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+	Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+		<script type="application/x-javascript">
+			addEventListener("load", function() {
+				setTimeout(hideURLbar, 0);
+			}, false);
+
+			function hideURLbar() {
+				window.scrollTo(0, 1);
+			}
+		</script>
+		<!-- //Custom Theme files -->
+		<!-- //js -->
+		<!--animate-->
+		<link href="/static/css/animate.css" rel="stylesheet" type="text/css" media="all">
+		<script src="/static/layui/layui.js"></script>
+		<!-- //image-hover -->
+		<style>
+			body {
+				font-family: verdana,helvetica,arial,sans-serif;
+				padding: 0px;
+				font-size: 14px;
+				margin: 0;
+			}
+			#container{
+				margin-left: 200px
+			}
+
+/*.content{*/
+/*	width: 70%;*/
+/*	margin: auto;*/
+/*}*/
+.tbody input{
+	border: 0;
+}
+th{
+	min-width: 60px;
+}
+td{
+	min-width: 60px;
+}
+.pageRow{
+	text-align: center;
+}
+</style>
+	</head>
+	<body>
+		<div class="top-nav">
+			<nav class="navbar navbar-default">
+				<div class="container">
+					<div class="navbar-header navbar-left">
+						<h1><a class="navbar-brand wow bounceIn animated" data-wow-delay=".5s" style="visibility: visible; -webkit-animation-delay: .5s;" href="/index">大棚数据可视化</a></h1>
+					</div>
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav navbar-left">
+							<li class="hvr-bounce-to-bottom"><a href="/index">首页</a></li>
+							<li class="hvr-bounce-to-bottom active"><a href="/table">数据展示</a></li>
+							<li class="hvr-bounce-to-bottom"><a href="/echarts">数据分析</a></li>
+							<li class="hvr-bounce-to-bottom"><a href="/about">关于我们</a></li>
+
+							<li class=""><form th:action="@{/logout}" method="post">
+								<button class="btn btn-danger" style="margin-top: 20px">退出登录</button>
+							</form></li>
+						</ul>
+						<div class="clearfix"> </div>
+					</div>
+				</div>
+			</nav>
+		</div>
+		<!--navigation-->
+		<!--about-->
+		<div class="content" style="width: 100%">
+			<!-- about-bottom -->
+			<div class="about-bottom">
+				<div class="container" id="container">
+					<h2>数据展示：</h2>
+					<div class="layui-inline">
+                    <label for="start_time">起始时间:</label>
+					<input class="easyui-datetimebox" id="start_time" name="start_time" style="width:20%">
+					<label for="end_time">结束时间:</label>
+					<input class="easyui-datetimebox" id="end_time" name="end_time" style="width:20%">
+					<button style="height: 30px;line-height: 30px;width: 58px;text-align: center;padding:0;" id="show" type="button" class="layui-btn">查看</button>
+					<table class="table table-hover table-bordered">
+						<thead id="result">
+						<tr>
+							<th>id</th><th>时间</th><th>空气温度</th><th>区域id</th><th>空气湿度</th><th>土壤温度</th><th>土壤湿度1</th>
+							<th>日照</th><th>二氧化碳浓度</th><th>土壤湿度5</th>
+						</tr>
+						</thead>
+						<tbody id="tbody">
+
+						</tbody>
+						<tfoot id="footer">
+
+						</tfoot>
+					</table>
+					<div class="pageRow">
+						<div id="pageination"></div>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+			</div>
+			<!-- //about-bottom -->
+			<!--team-->
+
+			<!--special-->
+			<div class="special">
+				<div class="container">
+				</div>
+			</div>
+			<!--//special-->
+			<!--footer-->
+		</div>
+			<div class="footer wow fadeInRight animated" data-wow-delay=".5s" style="visibility: visible; -webkit-animation-delay: .5s;">
+				<div class="container">
+					<p>欢迎联系我们</p>
+				</div>
+			</div>
+
+		<!--//services-->
+		<script src="/static/js/bootstrap.js"></script>
+		<script type="text/javascript">
+			window.currs = 0;
+			$(document).ready(function() {
+				page();
+			});
+			function page(){
+				$.ajax({
+				           url:'../data/getTotalPage'
+				           ,type:'get'
+				           ,success:function (obj) {
+				           		console.log(obj)
+				               window.currs = parseInt(obj);
+									layui.use(['laypage', 'layer'], function(){
+									    var laypage = layui.laypage
+									        ,layer = layui.layer;
+									    laypage.render({
+									        elem:'pageination'
+									        ,count: window.currs
+									        ,first: '首页'
+									        ,last: '尾页'
+									        ,prev: '上一页'
+									        ,next: '下一页'
+									        ,jump:function (obj) {
+
+												$.ajax({
+													url:'../data/getAllDataListPage',
+													data:{"pageNum":obj.curr},
+													type:'get',
+													dataType:'json',
+													success:function(res){
+
+														var con = '';
+													      $.each(res,function(i,item){
+															  con +='<tr><td>'+item.id+'</td><td>'+item.datetime+'</td><td>'+item.airtemp1 +'</td><td>'+item.plotid+'</td><td>'+item.airhumi1+
+																	  '</td><td>'+item.soiltemp1+'</td><td>'+item.soilhumi1+'</td><td>'+item.sundata1+'</td><td>'+item.co2+
+																	  '</td><td>'+item.soilhumi5+'</td></tr>';
+														  })
+														  $("#tbody").html(con);
+													},
+													error:function () {
+														console.log("error");
+													}
+												})
+				                            }
+				                       });
+									});
+				           }
+				           ,error:function () {
+				               alert("查询失败");
+				           }
+				       });
+			}
+			$("#show").on("click",function(){
+				var start=$("#start_time").val();
+				var end=$("#end_time").val();
+				$.ajax({
+					url:'../data/getSelectPage',
+					data:{"pageNum1":start,"pageNum2":end},
+					type:"get",
+					success:function(currs){
+						layui.use(['laypage', 'layer'], function(){
+															    var laypage = layui.laypage
+															        ,layer = layui.layer;
+															    laypage.render({
+															        elem:'pageination'
+															        ,count: currs
+															        ,first: '首页'
+															        ,last: '尾页'
+															        ,prev: '上一页'
+															        ,next: '下一页'
+															        ,jump:function (obj) {
+																		$.ajax({
+																			url:'../data/date1ToDate2',
+																			data:{"pageNum1":start,"pageNum2":end,"pageNum":obj.curr},
+																			type:'get',
+																			dataType:'json',
+																			success:function(res){
+						
+																				var con = '';
+																			      $.each(res,function(i,item){
+																					  con +='<tr><td>'+item.id+'</td><td>'+item.datetime+'</td><td>'+item.airtemp1 +'</td><td>'+item.plotid+'</td><td>'+item.airhumi1+
+																							  '</td><td>'+item.soiltemp1+'</td><td>'+item.soilhumi1+'</td><td>'+item.sundata1+'</td><td>'+item.co2+
+																							  '</td><td>'+item.soilhumi5+'</td></tr>';
+																			      })
+																				  $("#tbody").html(con);
+																			},
+																			error:function () {
+																				console.log("error");
+																			}
+																		})
+						                     }
+						                });
+															});
+						    },error:function () {
+						        alert("查询失败");
+						    }
+						});
+				})
+		</script>
+		</div>
+	</body>
+</html>

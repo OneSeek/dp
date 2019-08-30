@@ -1,0 +1,36 @@
+server:
+  port: 8090
+
+spring:
+  mvc:
+    static-path-pattern: /static/**
+  datasource:
+    url: jdbc:mysql://188.131.246.96:3306/dp?allowPublicKeyRetrieval=true&useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT&useSSL=false
+    username: root
+    password: 13853097744
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    #    name: dp
+    #    url: jdbc:mysql://localhost:3306/dp?allowPublicKeyRetrieval=true&useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT&useSSL=false
+    #    username: root
+    #    password: root
+  thymeleaf:
+    servlet:
+      content-type: text/html
+    encoding: UTF-8
+    mode: LEGACYHTML5
+    prefix: classpath:/static/
+    cache: false
+    suffix: .html
+
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml  #注意：一定要对应mapper映射xml文件的所在路径
+  type-aliases-package: cn.oneseek.dp.model  # 注意：对应实体类的路径
+  configuration:
+    map-underscore-to-camel-case: true
+
+pagehelper:
+  helper-dialect: mysql
+  params: count=countSql
+  reasonable: true
+  support-methods-arguments: true

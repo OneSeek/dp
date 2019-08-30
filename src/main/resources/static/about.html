@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+<title>大棚数据可视化</title>
+<link href="/static/css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
+<link href="/static/css/style.css" type="text/css" rel="stylesheet" media="all">
+<!-- Custom Theme files -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Collective Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+	Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- //Custom Theme files -->
+<!-- js -->
+<script src="/static/js/jquery-1.11.1.min.js"></script>
+<!-- //js -->	
+<!--animate-->
+<link href="/static/css/animate.css" rel="stylesheet" type="text/css" media="all">
+<!-- //image-hover -->
+</head>
+<body>
+	<!--navigation-->
+	<div class="top-nav">
+		<nav class="navbar navbar-default">
+			<div class="container">
+				<div class="navbar-header navbar-left">
+					<h1><a class="navbar-brand wow bounceIn animated" data-wow-delay=".5s" style="visibility: visible; -webkit-animation-delay: .5s;" href="/index">大棚数据可视化</a></h1>
+				</div>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav navbar-left">
+                        <li class="hvr-bounce-to-bottom"><a href="/index">首页</a></li>
+						<li class="hvr-bounce-to-bottom"><a href="/table">数据展示</a></li>
+						<li class="hvr-bounce-to-bottom"><a href="/echarts">数据分析</a></li>
+						<li class="hvr-bounce-to-bottom active"><a href="/about">关于我们</a></li>
+						<li class=""><form th:action="@{/logout}" method="post">
+							<button class="btn btn-danger" style="margin-top: 20px">退出登录</button>
+						</form></li>
+					</ul>
+					<div class="clearfix"> </div>
+				</div>
+			</div>	
+		</nav>		
+	</div>	
+	<!--navigation-->
+	<!--about-->
+	<!--team-->
+	<div class="team" id="team">
+		<div class="container">
+			<h3 class="title title1">Meet Our <span>Team</span></h3>
+			<div class="team-info">
+				<span style="float: right;font-size:3rem;line-height:80px;margin-right: 5%;width: 70%;height: 100%;">
+					by 王智创，李焕然，徐梦瑶，李硕，王汝毅<br>
+					from 山东农业大学<br>
+					<br>
+
+				</span>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+	<!--//team-->
+	<!--special-->
+	<div class="special"> 
+		<div class="container">
+			
+		</div>
+	</div>
+	<!--//special-->
+	<!--footer-->
+	<div class="footer wow fadeInRight animated" data-wow-delay=".5s" style="visibility: visible; -webkit-animation-delay: .5s;">
+		<div class="container">
+			<p>欢迎联系我们</p>
+		</div>
+	</div>
+	<!--//services-->
+    <script src="/static/js/bootstrap.js"></script>
+</body>
+</html>

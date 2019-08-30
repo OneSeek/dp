@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.oneseek.dp.mapper.DataMapper" >
+  <resultMap id="BaseResultMap" type="cn.oneseek.dp.model.Data" >
+    <result column="id" property="id" jdbcType="INTEGER" />
+    <result column="datetime" property="datetime" jdbcType="TIMESTAMP" />
+    <result column="airtemp1" property="airtemp1" jdbcType="REAL" />
+    <result column="plotid" property="plotid" jdbcType="REAL" />
+    <result column="airhumi1" property="airhumi1" jdbcType="REAL" />
+    <result column="soiltemp1" property="soiltemp1" jdbcType="REAL" />
+    <result column="soilhumi1" property="soilhumi1" jdbcType="REAL" />
+    <result column="sundata1" property="sundata1" jdbcType="REAL" />
+    <result column="co2" property="co2" jdbcType="REAL" />
+    <result column="soilhumi5" property="soilhumi5" jdbcType="REAL" />
+  </resultMap>
+  <insert id="insert" parameterType="cn.oneseek.dp.model.Data" >
+    insert into xtcx (id, datetime, airtemp1, 
+      plotid, airhumi1, soiltemp1, 
+      soilhumi1, sundata1, co2, soilhumi5)
+    values (#{id,jdbcType=INTEGER}, #{datetime,jdbcType=TIMESTAMP}, #{airtemp1,jdbcType=REAL}, 
+      #{plotid,jdbcType=REAL}, #{airhumi1,jdbcType=REAL}, #{soiltemp1,jdbcType=REAL}, 
+      #{soilhumi1,jdbcType=REAL}, #{sundata1,jdbcType=REAL}, #{co2,jdbcType=REAL}, #{soilhumi5,jdbcType=REAL}
+
+  </insert>
+  <insert id="insertSelective" parameterType="cn.oneseek.dp.model.Data" >
+    insert into xtcx
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="datetime != null" >
+        datetime,
+      </if>
+      <if test="airtemp1 != null" >
+        airtemp1,
+      </if>
+      <if test="plotid != null" >
+        plotid,
+      </if>
+      <if test="airhumi1 != null" >
+        airhumi1,
+      </if>
+      <if test="soiltemp1 != null" >
+        soiltemp1,
+      </if>
+      <if test="soilhumi1 != null" >
+        soilhumi1,
+      </if>
+      <if test="sundata1 != null" >
+        sundata1,
+      </if>
+      <if test="co2 != null" >
+        co2,
+      </if>
+      <if test="soilhumi5 != null" >
+        soilhumi5,
+      </if>
+
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="datetime != null" >
+        #{datetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="airtemp1 != null" >
+        #{airtemp1,jdbcType=REAL},
+      </if>
+      <if test="plotid != null" >
+        #{plotid,jdbcType=REAL},
+      </if>
+      <if test="airhumi1 != null" >
+        #{airhumi1,jdbcType=REAL},
+      </if>
+      <if test="soiltemp1 != null" >
+        #{soiltemp1,jdbcType=REAL},
+      </if>
+      <if test="soilhumi1 != null" >
+        #{soilhumi1,jdbcType=REAL},
+      </if>
+      <if test="sundata1 != null" >
+        #{sundata1,jdbcType=REAL},
+      </if>
+      <if test="co2 != null" >
+        #{co2,jdbcType=REAL},
+      </if>
+      <if test="soilhumi5 != null" >
+        #{soilhumi5,jdbcType=REAL},
+      </if>
+    </trim>
+  </insert>
+
+
+  <select id="getAllData" resultMap="BaseResultMap">
+    select * from xtcx
+  </select>
+
+  <select id="byDate" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    *
+    from xtcx
+    where  DATE_FORMAT(datetime,'%Y%m%d%H') =  #{date,jdbcType=INTEGER}
+  </select>
+
+  <select id="byDate2" resultMap="BaseResultMap">
+    select
+    *
+    from xtcx
+    where  DATE_FORMAT(datetime,'%Y%m%d%H') BETWEEN
+     #{id1,jdbcType=INTEGER} AND  #{id2,jdbcType=INTEGER}
+
+  </select>
+
+
+</mapper>
